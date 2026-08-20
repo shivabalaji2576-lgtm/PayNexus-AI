@@ -96,7 +96,7 @@ export default function Landing() {
                 <div className="h-32 bg-white/5 rounded-xl border border-white/10 p-4">
                    <div className="flex items-end justify-between h-full gap-2 pt-4">
                       {[40, 70, 45, 90, 65, 80, 55].map((h, i) => (
-                        <div key={i} className="w-full bg-gradient-to-t from-blue-500/50 to-cyan-400/50 rounded-t-sm" style={{ height: \`\${h}%\` }}></div>
+                        <div key={i} className="w-full bg-gradient-to-t from-blue-500/50 to-cyan-400/50 rounded-t-sm" style={{ height: `${h}%` }}></div>
                       ))}
                    </div>
                 </div>
