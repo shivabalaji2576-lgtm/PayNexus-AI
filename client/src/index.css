@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3B82F6;
+  --color-accent-cyan: #06B6D4;
+  --color-accent-purple: #8B5CF6;
+  
+  --color-surface-bg: #070B14;
+  --color-surface-secondary: #0D1424;
+  --color-surface-card: #111827;
+  
+  --color-text-main: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+
+  --color-border-glass: rgba(148,163,184,0.15);
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --animate-slide-up: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slide-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--color-surface-bg)] text-[var(--color-text-main)] antialiased min-h-screen selection:bg-[var(--color-primary)] selection:text-white;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-[var(--color-surface-card)]/80 backdrop-blur-md border border-[var(--color-border-glass)] shadow-lg rounded-2xl transition-all duration-300;
+  }
+  .glass-card:hover {
+    @apply -translate-y-1 border-[var(--color-border-glass)] shadow-xl shadow-cyan-500/10 brightness-110;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium px-6 py-2.5 rounded-lg shadow-lg shadow-blue-500/20 transition-all duration-300 hover:shadow-blue-500/40 hover:-translate-y-0.5 hover:brightness-110 flex items-center justify-center gap-2;
+  }
+}
