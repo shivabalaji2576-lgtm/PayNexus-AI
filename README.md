@@ -46,7 +46,11 @@ PayNexus AI helps merchants understand and resolve payment-related operational p
    cd client
    npm install
    ```
-2. Start the Vite dev server:
+2. Create a `.env` file in the `client` directory and set the API URL to point to your local backend (you can copy `.env.example`):
+   ```env
+   VITE_API_URL=http://localhost:5000/api
+   ```
+3. Start the Vite dev server:
    ```bash
    npm run dev
    ```
