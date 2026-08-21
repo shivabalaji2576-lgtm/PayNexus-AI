@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const prisma = require('../utils/prisma');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'paynexus_secure_secret_2026_xyz';
+
 const protect = async (req, res, next) => {
   let token;
 
@@ -9,12 +11,8 @@ const protect = async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     try {
-      if (!process.env.JWT_SECRET) {
-        throw new Error('JWT_SECRET is not defined');
-      }
-      
       token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, JWT_SECRET);
 
       const user = await prisma.user.findUnique({
         where: { id: decoded.id },
